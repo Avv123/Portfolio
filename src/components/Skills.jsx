@@ -33,7 +33,7 @@ export default function Skills() {
             transition={{ duration: 0.6, delay: i * 0.06 }}
             className="card-surface p-5"
           >
-            <p className="mb-4 font-mono text-xs uppercase tracking-wider text-ink-400">{s.group}</p>
+            <p className="mb-4 font-mono text-xs uppercase tracking-wider text-ink-300">{s.group}</p>
             <div className="flex flex-wrap gap-2">
               {s.items.map((item) => (
                 <span key={item} className="pill">
@@ -52,7 +52,7 @@ export default function Skills() {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="mt-16"
       >
-        <p className="mb-5 font-mono text-xs uppercase tracking-wider text-ink-400">
+        <p className="mb-5 font-mono text-xs uppercase tracking-wider text-ink-300">
           Competitive programming &amp; profiles
         </p>
         <div className="flex flex-wrap gap-3">
@@ -65,7 +65,7 @@ export default function Skills() {
               className="card-surface flex items-center gap-2 px-4 py-2.5 text-sm text-ink-200 transition-colors hover:border-accent/50 hover:text-accent"
             >
               <span className="font-medium">{s.label}</span>
-              <span className="font-mono text-xs text-ink-400">{s.handle}</span>
+              <span className="font-mono text-xs text-ink-300">{s.handle}</span>
             </a>
           ))}
         </div>

@@ -53,7 +53,7 @@ export default function About() {
                 {education.degree} · {education.detail}
               </p>
             </div>
-            <p className="font-mono text-xs text-ink-400">{education.period}</p>
+            <p className="font-mono text-xs text-ink-300">{education.period}</p>
           </motion.div>
         </div>
 

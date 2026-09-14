@@ -39,9 +39,9 @@ export default function Experience() {
               <h3 className="text-lg font-semibold text-ink-100 sm:text-xl">
                 {job.role} <span className="text-ink-400">— {job.company}</span>
               </h3>
-              <span className="font-mono text-xs text-ink-400">{job.period}</span>
+              <span className="font-mono text-xs text-ink-300">{job.period}</span>
             </div>
-            <p className="mb-4 font-mono text-xs text-ink-400">{job.location}</p>
+            <p className="mb-4 font-mono text-xs text-ink-300">{job.location}</p>
 
             <ul className="space-y-2.5">
               {job.points.map((pt) => (

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X, Download } from 'lucide-react'
 
 const links = [
@@ -12,6 +12,8 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const menuRef = useRef(null)
+  const toggleRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -19,6 +21,31 @@ export default function Nav() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    const onClickOutside = (e) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        toggleRef.current &&
+        !toggleRef.current.contains(e.target)
+      ) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('mousedown', onClickOutside)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('mousedown', onClickOutside)
+    }
+  }, [open])
 
   return (
     <header
@@ -52,16 +79,18 @@ export default function Nav() {
         </div>
 
         <button
+          ref={toggleRef}
           className="text-ink-100 md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
+          aria-expanded={open}
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-ink-700/70 bg-ink-950/95 px-6 py-4 md:hidden">
+        <div ref={menuRef} className="border-t border-ink-700/70 bg-ink-950/95 px-6 py-4 md:hidden">
           <ul className="flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>

@@ -1,8 +1,28 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, ArrowUpRight } from 'lucide-react'
+import { Github, Linkedin, Mail, Copy, Check } from 'lucide-react'
 import { profile } from '../data.js'
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email)
+    } catch {
+      const el = document.createElement('textarea')
+      el.value = profile.email
+      el.style.position = 'fixed'
+      el.style.opacity = '0'
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
     <section id="contact" className="section-shell py-24 sm:py-32">
       <div className="card-surface overflow-hidden px-6 py-16 text-center sm:px-12">
@@ -45,13 +65,20 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.16 }}
           className="relative mt-9"
         >
-          <a
-            href={`mailto:${profile.email}`}
+          <button
+            onClick={copyEmail}
             className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-sm font-medium text-ink-950 transition-transform hover:scale-[1.03]"
           >
             {profile.email}
-            <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+            {copied ? (
+              <Check size={15} />
+            ) : (
+              <Copy size={15} className="transition-transform group-hover:scale-110" />
+            )}
+          </button>
+          <p className="mt-3 font-mono text-xs text-ink-300" aria-live="polite">
+            {copied ? 'Copied to clipboard' : 'Click to copy · or use the mail icon below'}
+          </p>
         </motion.div>
 
         <motion.div

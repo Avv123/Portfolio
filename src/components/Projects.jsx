@@ -52,7 +52,7 @@ export default function Projects() {
 
             <ul className="mt-4 space-y-2">
               {p.highlights.map((h) => (
-                <li key={h} className="flex gap-2 text-[13px] leading-relaxed text-ink-400">
+                <li key={h} className="flex gap-2 text-[13px] leading-relaxed text-ink-300">
                   <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink-400" />
                   {h}
                 </li>
@@ -67,7 +67,7 @@ export default function Projects() {
                   </span>
                 ))}
               </div>
-              <div className="mt-4 flex items-center justify-between font-mono text-[11px] text-ink-400">
+              <div className="mt-4 flex items-center justify-between font-mono text-[11px] text-ink-300">
                 <span>{p.year}</span>
                 {p.meta && (
                   <span className="flex items-center gap-1 text-signal">
