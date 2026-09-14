@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Star } from 'lucide-react'
 import { projects } from '../data.js'
+import PulseLensDiagram from './diagrams/PulseLensDiagram.jsx'
+import IdempoFlowDiagram from './diagrams/IdempoFlowDiagram.jsx'
 
 export default function Projects() {
   return (
@@ -79,6 +81,54 @@ export default function Projects() {
           </motion.a>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.6 }}
+        className="mt-16"
+      >
+        <p className="mb-6 font-mono text-xs uppercase tracking-wider text-ink-300">Under the hood</p>
+
+        <div className="card-surface p-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-semibold text-ink-100">PulseLens — architecture</h3>
+            <a
+              href="https://github.com/Avv123/Multi-Tenant-Observability-Platform"
+              target="_blank"
+              rel="noreferrer"
+              className="link-underline font-mono text-xs"
+            >
+              View repo →
+            </a>
+          </div>
+          <p className="mt-1 text-[13px] text-ink-400">
+            Telemetry flows through decoupled Go microservices, splitting into ClickHouse for fast
+            analytical reads and PostgreSQL for control-plane/tenant data before alerting fans out.
+          </p>
+          <PulseLensDiagram />
+        </div>
+
+        <div className="card-surface mt-6 p-6">
+          <div className="flex items-center justify-between">
+            <h3 className="text-base font-semibold text-ink-100">idempo — request flow</h3>
+            <a
+              href="https://github.com/Avv123/idempo"
+              target="_blank"
+              rel="noreferrer"
+              className="link-underline font-mono text-xs"
+            >
+              View repo →
+            </a>
+          </div>
+          <p className="mt-1 text-[13px] text-ink-400">
+            A retried request with a known key never re-runs the handler — it either waits on the
+            in-flight original or gets the cached response back, instantly.
+          </p>
+          <IdempoFlowDiagram />
+        </div>
+      </motion.div>
     </section>
   )
 }

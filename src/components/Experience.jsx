@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { experience } from '../data.js'
+import SqsFanOutDiagram from './diagrams/SqsFanOutDiagram.jsx'
 
 export default function Experience() {
   return (
@@ -59,6 +60,19 @@ export default function Experience() {
                 </span>
               ))}
             </div>
+
+            {i === 0 && (
+              <div className="card-surface mt-6 p-5">
+                <p className="mb-1 font-mono text-xs uppercase tracking-wider text-ink-300">
+                  Billing pipeline — SQS fan-out/fan-in
+                </p>
+                <p className="text-xs text-ink-400">
+                  Reduced bill-generation time 70% by parallelizing calls to 11 external services across a
+                  pool of async workers, then aggregating before a Redis-cached batch write.
+                </p>
+                <SqsFanOutDiagram />
+              </div>
+            )}
           </motion.div>
         ))}
       </div>
