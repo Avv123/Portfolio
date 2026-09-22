@@ -10,7 +10,7 @@ export const profile = {
     "I'm a software engineer at Omniful, building production backend systems in Go for billing, analytics, and supply-chain operations.",
     "The problems I enjoy most only show up under real load — a retry that shouldn't double-charge a tenant, a batch job that needs to recover cleanly from a partial failure, a query pattern that's fine at 10 tenants and falls over at 100. Most of my work has been chasing down and designing around exactly those edges.",
     "I'm just as interested in the data side of things: keeping numbers consistent across services that were never built to agree with each other, and building the alerting that tells you the moment they don't.",
-    "Outside of work, I've solved 1,300+ algorithmic problems across coding platforms and hold a Specialist rank on Codeforces — that foundation shows up in how I debug production issues and design efficient systems.",
+    "Outside of work, I've solved 1,500+ algorithmic problems across coding platforms and hold a Specialist rank on Codeforces — that foundation shows up in how I debug production issues and design efficient systems.",
   ],
 }
 
@@ -112,7 +112,7 @@ export const skills = [
 ]
 
 export const achievements = [
-  { stat: '1,300+', label: 'problems solved across coding platforms' },
+  { stat: '1,500+', label: 'problems solved across coding platforms' },
   { stat: '42 / 3,393', label: 'rank in GeeksForGeeks Job-a-thon 2023' },
   { stat: 'Specialist', label: 'rank on Codeforces' },
   { stat: 'Runner-up', label: 'Hyperverge Hackathon 2024' },

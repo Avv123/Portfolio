@@ -68,7 +68,9 @@ export default function About() {
               variants={fadeUp}
               className="card-surface p-5 transition-colors hover:border-accent/40"
             >
-              <p className="font-mono text-2xl font-bold text-accent sm:text-3xl">{a.stat}</p>
+              <p className="break-words font-mono text-xl font-bold leading-tight text-accent sm:text-2xl">
+                {a.stat}
+              </p>
               <p className="mt-2 text-xs leading-relaxed text-ink-300">{a.label}</p>
             </motion.div>
           ))}
