@@ -66,9 +66,9 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
               variants={fadeUp}
-              className="card-surface p-5 transition-colors hover:border-accent/40"
+              className="card-surface p-4 transition-colors hover:border-accent/40 sm:p-5"
             >
-              <p className="break-words font-mono text-xl font-bold leading-tight text-accent sm:text-2xl">
+              <p className="break-words font-mono text-lg font-bold leading-tight text-accent sm:text-2xl">
                 {a.stat}
               </p>
               <p className="mt-2 text-xs leading-relaxed text-ink-300">{a.label}</p>
